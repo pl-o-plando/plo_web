@@ -1,0 +1,43 @@
+#side-bar {
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #56337b;
+  color: white;
+  justify-content: space-between;
+  position: fixed;
+}
+
+#logo {
+  font-size: 55px;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 40px;
+  margin-bottom: 150px;
+}
+
+#items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+#loginBtn {
+  font-size: 30px;
+  border: 2px solid white;
+  width: 129px;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
+  font-weight: bold;
+}
