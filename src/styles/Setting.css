@@ -1,7 +1,6 @@
 #main {
   width: 1100px;
-  overflow: auto;
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 #box1 {
@@ -82,10 +81,58 @@
 
 #box2 {
   background-color: #E5D1FA;
+  border: 2px solid #976EC2;
+  color: #976EC2;
+  font-size: 30px;
 }
 
 #nickedit {
   display: flex;
   height: 100px;
   align-items: center;
+  margin: 0 30px;
+}
+
+#newPassword {
+  display: flex;
+}
+
+.btn_del {
+  background-color: #976EC2;
+  color: white;
+  width: 90px;
+  height: 40px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.input {
+  display: flex;
+}
+
+.edit {
+  margin: 0 30px;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+#out {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#btn_out {
+  background-color: #FF9C9C;
+  color: white;
+  width: 90px;
+  height: 40px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import "../styles/Setting.css";
+import plus from "../assets/btn_plus.png";
 
 const Setting=()=> {
   return (
@@ -18,18 +19,18 @@ const Setting=()=> {
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input/>
+          <input style={{width:"500px", height:"40px"}}/>
           <div className='btn_edit'>수정</div>
         </div>
         <hr/>
         <div className='edit'>
           <div>
             현재 비밀번호
-            <input/>
+            <input style={{width:"500px", height:"40px"}}/>
           </div>
-          <div>
+          <div id='newPassword'>
             새 비밀번호 
-            <input/>
+            <input style={{width:"500px", height:"40px"}}/>
             <div className='btn_edit'>수정</div>
           </div>
           영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
@@ -39,23 +40,23 @@ const Setting=()=> {
           <div>
             카테고리
           </div>
-          <div>
-            <input/>
+          <div className='input'>
+            <input style={{width:"650px", height:"40px"}}/>
             <div className='btn_edit'>수정</div>
             <div className='btn_del'>삭제</div>
           </div>
           <div>
             루틴
           </div>
-          <div>
-            <input/>
+          <div className='input'>
+            <input style={{width:"500px", height:"40px"}}/>
             <div className='btn_edit'>수정</div>
             <div className='btn_del'>삭제</div>
           </div>
         </div>
         <hr/>
         <div className='edit'>
-          <div>
+          <div id='out'>
             회원탈퇴
             <div id='btn_out'>탈퇴</div>
           </div>
