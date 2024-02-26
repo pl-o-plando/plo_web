@@ -3,19 +3,65 @@ import "../styles/Setting.css";
 
 const Setting=()=> {
   return (
-    <div>
+    <div id='main'>
       <div id='box1'>
         <div id='nicknameBox'>
           <p>pl&o</p>
           <div>nickname 님</div>
         </div>
         <div id='mindedBox'>
-          <p>각오</p>
-          <div id='md'>아자 아자 화이팅!!</div>
-          <div id='btn_1'>수정</div>
+          각오
+          <input id='md'/>
+          <div className='btn_edit'>수정</div>
         </div>
       </div>
-      <div id='box2'>상세 설정</div>
+      <div id='box2'>
+        <div id='nickedit'>
+          닉네임
+          <input/>
+          <div className='btn_edit'>수정</div>
+        </div>
+        <hr/>
+        <div className='edit'>
+          <div>
+            현재 비밀번호
+            <input/>
+          </div>
+          <div>
+            새 비밀번호 
+            <input/>
+            <div className='btn_edit'>수정</div>
+          </div>
+          영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
+        </div>
+        <hr/>
+        <div className='edit'>
+          <div>
+            카테고리
+          </div>
+          <div>
+            <input/>
+            <div className='btn_edit'>수정</div>
+            <div className='btn_del'>삭제</div>
+          </div>
+          <div>
+            루틴
+          </div>
+          <div>
+            <input/>
+            <div className='btn_edit'>수정</div>
+            <div className='btn_del'>삭제</div>
+          </div>
+        </div>
+        <hr/>
+        <div className='edit'>
+          <div>
+            회원탈퇴
+            <div id='btn_out'>탈퇴</div>
+          </div>
+          탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.
+        </div>
+      </div>
     </div>
   );
 }
