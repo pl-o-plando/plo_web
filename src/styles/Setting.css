@@ -1,0 +1,60 @@
+#box1 {
+  width: 80%;
+  height: 250px;
+  background-color: #E5D1FA;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+#nicknameBox {
+  width: 45%;
+  border: 2px solid #976EC2;
+  border-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#nicknameBox p {
+  color: #976EC2;
+  font-size: 50px;
+  margin: 0;
+}
+
+#nicknameBox div {
+  background-color: white;
+  width: 80%;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 25px;
+  color: #848484;
+  text-align: center;
+  border: 2px solid #976EC2;
+}
+#mindedBox {
+  width: 55%;
+  border: 2px solid #976EC2;
+}
+
+#mindedBox p {
+  color: #976EC2;
+  font-size: 25px;
+}
+
+#md {
+  background-color: white;
+  width: 90%;
+  margin:  0 auto;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid #976EC2;
+}
+
+#btn_1 {
+  background-color: #976EC2;
+  color: white;
+  width: 60px;
+  text-align: center;
+}
