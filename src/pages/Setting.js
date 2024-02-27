@@ -19,38 +19,38 @@ const Setting=()=> {
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input style={{width:"500px", height:"40px"}}/>
+          <input style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"30px"}}/>
           <div className='btn_edit'>수정</div>
         </div>
         <hr/>
         <div className='edit'>
-          <div>
+          <div id='password'>
             현재 비밀번호
-            <input style={{width:"500px", height:"40px"}}/>
+            <input style={{width:"650px", height:"40px", marginLeft:"50px"}}/>
           </div>
           <div id='newPassword'>
             새 비밀번호 
-            <input style={{width:"500px", height:"40px"}}/>
+            <input style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"30px"}}/>
             <div className='btn_edit'>수정</div>
           </div>
           영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
         </div>
         <hr/>
         <div className='edit'>
-          <div>
+          <div style={{margin:"20px 0 40px 0"}}>
             카테고리
           </div>
           <div className='input'>
-            <input style={{width:"650px", height:"40px"}}/>
-            <div className='btn_edit'>수정</div>
+            <input style={{width:"750px", height:"40px", marginRight:"48px"}}/>
+            <div className='btn_edit'  style={{marginRight:"20px"}}>수정</div>
             <div className='btn_del'>삭제</div>
           </div>
-          <div>
+          <div style={{margin:"30px 0 30px 60px"}}>
             루틴
           </div>
-          <div className='input'>
-            <input style={{width:"500px", height:"40px"}}/>
-            <div className='btn_edit'>수정</div>
+          <div className='input' style={{marginLeft:"60px"}}>
+            <input style={{width:"690px", height:"40px", marginRight:"48px"}}/>
+            <div className='btn_edit' style={{marginRight:"20px"}}>수정</div>
             <div className='btn_del'>삭제</div>
           </div>
         </div>
