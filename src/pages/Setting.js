@@ -71,11 +71,11 @@ const Setting=()=> {
     <div id='main'>
       <div id='box1'>
         <div id='nicknameBox'>
-          <p>pl&o</p>
+          <p style={{WebkitTextStroke:"1px white", fontWeight:"800", fontStyle:"italic"}}>pl&o</p>
           <div>{nickname} 님</div>
         </div>
         <div id='mindedBox'>
-          각오
+          <span style={{WebkitTextStroke:"1px white", fontWeight:"bold"}}>각오</span>
           <input id='md' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)}/>
           <div className='btn_edit' onClick={handleMdEdit}>수정</div>
         </div>
@@ -83,7 +83,7 @@ const Setting=()=> {
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"40px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
+          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"148px", marginRight:"40px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
           <div className='btn_edit' onClick={handleNicknameEdit}>수정</div>
         </div>
         <hr/>
