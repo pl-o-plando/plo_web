@@ -1,26 +1,45 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "../styles/Setting.css";
 import plus from "../assets/btn_plus.png";
 
 const Setting=()=> {
+  const [nickname, setNickname] = useState('nickname');
+  const [newNickname, setNewNickname] = useState('');
+  const [isNicknameChanged, setIsNicknameChanged] = useState(false);
+  const [md, setMd] = useState('아자아자 화이팅');
+  const [newMd, setNewMd] = useState('');
+  const [isMdChanged, setIsMdChanged] = useState(false);
+
+  const handleNicknameEdit = () => {
+    setNickname(newNickname);
+    setNewNickname('');
+    setIsNicknameChanged(true);
+  };
+
+  const handleMdEdit = () => {
+    setMd(newMd);
+    setNewMd('');
+    setIsMdChanged(true);
+  }
+
   return (
     <div id='main'>
       <div id='box1'>
         <div id='nicknameBox'>
           <p>pl&o</p>
-          <div>nickname 님</div>
+          <div>{nickname} 님</div>
         </div>
         <div id='mindedBox'>
           각오
-          <input id='md'/>
-          <div className='btn_edit'>수정</div>
+          <input id='md' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)}/>
+          <div className='btn_edit' onClick={handleMdEdit}>수정</div>
         </div>
       </div>
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"30px"}}/>
-          <div className='btn_edit'>수정</div>
+          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"30px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
+          <div className='btn_edit' onClick={handleNicknameEdit}>수정</div>
         </div>
         <hr/>
         <div className='edit'>
