@@ -3,53 +3,64 @@ import "../styles/Setting.css";
 import plus from "../assets/btn_plus.png";
 
 const Setting=()=> {
+  //닉네임, 각오
   const [nickname, setNickname] = useState('nickname');
   const [newNickname, setNewNickname] = useState('');
   const [isNicknameChanged, setIsNicknameChanged] = useState(false);
   const [md, setMd] = useState('아자아자 화이팅');
   const [newMd, setNewMd] = useState('');
   const [isMdChanged, setIsMdChanged] = useState(false);
+
+  //카테고리, 루틴
   const [categories, setCategories] = useState(['']);
   const [routines, setRoutines] = useState(['']);
 
+  //닉네임 수정 
   const handleNicknameEdit = () => {
     setNickname(newNickname);
     setNewNickname('');
     setIsNicknameChanged(true);
   };
 
+  //각오 수정 
   const handleMdEdit = () => {
     setMd(newMd);
     setNewMd('');
     setIsMdChanged(true);
   }
 
+  //카테고리 추가
   const handleAddCategory = () => {
     setCategories([...categories, '']);
   };
 
+  //카테고리 변경 
   const handleCategoryChange = (index, value) => {
     const newCategories = [...categories];
     newCategories[index] = value;
     setCategories(newCategories);
   };
 
+  //카테고리 삭제 
   const handleDeleteCategory = (index) => {
     const newCategories = [...categories];
     newCategories.splice(index, 1);
     setCategories(newCategories);
   };
 
+  //루틴 추가 
   const handleAddRoutine = () => {
     setRoutines([...routines, '']);
   };
 
+  //루틴 변경 
   const handleRoutineChange = (index, value) => {
     const newRoutines = [...routines];
     newRoutines[index] = value;
     setRoutines(newRoutines);
   };
 
+  //루틴 삭제 
   const handleDeleteRoutine = (index) => {
     const newRoutines = [...routines];
     newRoutines.splice(index, 1);
