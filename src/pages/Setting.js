@@ -37,16 +37,18 @@ const Setting=()=> {
         </div>
         <hr/>
         <div className='edit'>
-          <div style={{margin:"20px 0 40px 0"}}>
+          <div style={{margin:"20px 0 40px 0", display:"flex", alignItems:"center"}}>
             카테고리
+            <img src={plus} style={{marginLeft:"860px"}}/>
           </div>
           <div className='input'>
             <input style={{width:"750px", height:"40px", marginRight:"48px"}}/>
             <div className='btn_edit'  style={{marginRight:"20px"}}>수정</div>
             <div className='btn_del'>삭제</div>
           </div>
-          <div style={{margin:"30px 0 30px 60px"}}>
+          <div style={{margin:"30px 0 30px 60px", display:"flex", alignItems:"center"}}>
             루틴
+            <img src={plus} style={{marginLeft:"860px"}}/>
           </div>
           <div className='input' style={{marginLeft:"60px"}}>
             <input style={{width:"690px", height:"40px", marginRight:"48px"}}/>
