@@ -9,6 +9,8 @@ const Setting=()=> {
   const [md, setMd] = useState('아자아자 화이팅');
   const [newMd, setNewMd] = useState('');
   const [isMdChanged, setIsMdChanged] = useState(false);
+  const [categories, setCategories] = useState(['']);
+  const [routines, setRoutines] = useState(['']);
 
   const handleNicknameEdit = () => {
     setNickname(newNickname);
@@ -21,6 +23,38 @@ const Setting=()=> {
     setNewMd('');
     setIsMdChanged(true);
   }
+
+  const handleAddCategory = () => {
+    setCategories([...categories, '']);
+  };
+
+  const handleCategoryChange = (index, value) => {
+    const newCategories = [...categories];
+    newCategories[index] = value;
+    setCategories(newCategories);
+  };
+
+  const handleDeleteCategory = (index) => {
+    const newCategories = [...categories];
+    newCategories.splice(index, 1);
+    setCategories(newCategories);
+  };
+
+  const handleAddRoutine = () => {
+    setRoutines([...routines, '']);
+  };
+
+  const handleRoutineChange = (index, value) => {
+    const newRoutines = [...routines];
+    newRoutines[index] = value;
+    setRoutines(newRoutines);
+  };
+
+  const handleDeleteRoutine = (index) => {
+    const newRoutines = [...routines];
+    newRoutines.splice(index, 1);
+    setRoutines(newRoutines);
+  };
 
   return (
     <div id='main'>
@@ -45,11 +79,11 @@ const Setting=()=> {
         <div className='edit'>
           <div id='password'>
             현재 비밀번호
-            <input style={{width:"650px", height:"40px", marginLeft:"50px"}}/>
+            <input placeholder='password' style={{width:"650px", height:"40px", marginLeft:"50px"}}/>
           </div>
           <div id='newPassword'>
             새 비밀번호 
-            <input style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"30px"}}/>
+            <input placeholder='password' style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"30px"}}/>
             <div className='btn_edit'>수정</div>
           </div>
           영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
@@ -58,22 +92,26 @@ const Setting=()=> {
         <div className='edit'>
           <div style={{margin:"20px 0 40px 0", display:"flex", alignItems:"center"}}>
             카테고리
-            <img src={plus} style={{marginLeft:"860px"}}/>
+            <img src={plus} style={{marginLeft:"860px"}} onClick={handleAddCategory}/>
           </div>
-          <div className='input'>
-            <input style={{width:"750px", height:"40px", marginRight:"48px"}}/>
-            <div className='btn_edit'  style={{marginRight:"20px"}}>수정</div>
-            <div className='btn_del'>삭제</div>
-          </div>
+          {categories.map((category, index) => (
+            <div className='input' key={index} style={{marginBottom:"25px"}}>
+              <input style={{ width: "750px", height: "40px", marginRight: "48px" }} value={category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
+              <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
+              <div className='btn_del'onClick={() => handleDeleteCategory(index)}>삭제</div>
+            </div>
+          ))}
           <div style={{margin:"30px 0 30px 60px", display:"flex", alignItems:"center"}}>
             루틴
-            <img src={plus} style={{marginLeft:"860px"}}/>
+            <img src={plus} style={{marginLeft:"860px"}} onClick={handleAddRoutine}/>
           </div>
-          <div className='input' style={{marginLeft:"60px"}}>
-            <input style={{width:"690px", height:"40px", marginRight:"48px"}}/>
-            <div className='btn_edit' style={{marginRight:"20px"}}>수정</div>
-            <div className='btn_del'>삭제</div>
-          </div>
+          {routines.map((routine, index) => (
+            <div className='input' key={index} style={{marginBottom:"25px", marginLeft:"60px"}}>
+              <input style={{ width: "690px", height: "40px", marginRight: "48px" }} value={routine} onChange={(event) => handleRoutineChange(index, event.target.value)} />
+              <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
+              <div className='btn_del' onClick={() => handleDeleteRoutine(index)}>삭제</div>
+            </div>
+          ))}
         </div>
         <hr/>
         <div className='edit'>
