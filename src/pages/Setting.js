@@ -83,7 +83,7 @@ const Setting=()=> {
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"30px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
+          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"150px", marginRight:"40px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
           <div className='btn_edit' onClick={handleNicknameEdit}>수정</div>
         </div>
         <hr/>
@@ -94,7 +94,7 @@ const Setting=()=> {
           </div>
           <div id='newPassword'>
             새 비밀번호 
-            <input placeholder='password' style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"30px"}}/>
+            <input placeholder='password' style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"40px"}}/>
             <div className='btn_edit'>수정</div>
           </div>
           영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
@@ -107,7 +107,7 @@ const Setting=()=> {
           </div>
           {categories.map((category, index) => (
             <div className='input' key={index} style={{marginBottom:"25px"}}>
-              <input style={{ width: "750px", height: "40px", marginRight: "48px" }} value={category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
+              <input style={{ width: "750px", height: "40px", marginRight: "50px" }} value={category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
               <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
               <div className='btn_del'onClick={() => handleDeleteCategory(index)}>삭제</div>
             </div>
@@ -118,7 +118,7 @@ const Setting=()=> {
           </div>
           {routines.map((routine, index) => (
             <div className='input' key={index} style={{marginBottom:"25px", marginLeft:"60px"}}>
-              <input style={{ width: "690px", height: "40px", marginRight: "48px" }} value={routine} onChange={(event) => handleRoutineChange(index, event.target.value)} />
+              <input style={{ width: "690px", height: "40px", marginRight: "50px" }} value={routine} onChange={(event) => handleRoutineChange(index, event.target.value)} />
               <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
               <div className='btn_del' onClick={() => handleDeleteRoutine(index)}>삭제</div>
             </div>
