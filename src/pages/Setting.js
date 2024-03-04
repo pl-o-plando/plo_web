@@ -73,56 +73,72 @@ const Setting = () => {
   };
 
   return (
-    <div id='main'>
-      <div id='box1'>
-        <div id='nicknameBox'>
-          <p>pl&o</p>
-          <div>{nickname} 님</div>
+    <div className='my-11'>
+      <div className='flex bg-[#E5D1FA] mb-5 border-[#976EC2] border-2 h-[14rem]'>
+        <div className='flex justify-center items-center flex-col w-[28rem] mb-5 border-[#976EC2] border-r-2 h-full'>
+          <p className='text-6xl text-[#976EC2] italic font-medium mb-7'>pl&o</p>
+          <div className='bg-white rounded w-[15rem] h-[3rem] flex justify-center items-center border-[#976EC2] border-2 text-xl'>{nickname} 님</div>
         </div>
-        <div id='mindedBox'>
-          <span>각오</span>
-          <textarea id='md' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)} />
-          <div className='btn_edit' onClick={handleMdEdit}>수정</div>
+        <div className='flex flex-col w-[32rem]'>
+          <p className='text-3xl text-[#976EC2] mt-1 w-11/12 my-0 mx-auto h-[3rem] flex items-center font-bold'>각오</p>
+          <textarea className='w-11/12 h-[7rem] my-0 mx-auto rounded border-[#976EC2] border-2' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)} />
+          <div className='w-11/12 my-0 mx-auto mt-2'>
+            <div className='float-right bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold' onClick={handleMdEdit}>수정</div>
+          </div>
         </div>
       </div>
-      <div id='box2'>
-        <div id='nickedit'>
-          닉네임
-          <input placeholder={isNicknameChanged ? nickname : "nickname"} value={newNickname} onChange={(event) => setNewNickname(event.target.value)} />
-          <div className='btn_edit' onClick={handleNicknameEdit}>수정</div>
+      <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold'>
+        <div className='flex items-center h-[8rem] w-11/12 my-0 mx-auto justify-end'>
+          <p className='flex grow'>닉네임</p>
+          <input className='w-[35rem] font-normal border-[#976EC2] border-2 rounded grow-2' placeholder={isNicknameChanged ? nickname : "nickname"} value={newNickname} onChange={(event) => setNewNickname(event.target.value)} />
+          <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'onClick={handleNicknameEdit}>수정</div>
         </div>
         <hr />
-        <div className='edit'>
-          <div>
+        <div className='h-[12rem]'>
+          <div className='flex items-center'>
+            <p>현재 비밀번호</p>
+            <input className='w-[35rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
+          </div>
+          <div className='flex items-center'>
+            <p>새 비밀번호</p>
+            <input className='w-[35rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
+            <div>수정</div>
+          </div>
+          <p>영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.</p>
+        </div>
+        <hr/>
+        <div>
+          <div className='flex items-center w-11/12 my-0 mx-auto justify-between'>
             카테고리
-            <img src={plus} onClick={handleAddCategory} />
+            <img className='w-10 h-10' src={plus} onClick={handleAddCategory} />
           </div>
           {categoriesAndRoutines.map((item, index) => (
             <div key={index}>
-              <div className='input' style={{ marginBottom: "25px" }}>
-                <input value={item.category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
-                <div className='btn_edit'>수정</div>
-                <div className='btn_del' onClick={() => handleDeleteCategory(index)}>삭제</div>
+              <div className='flex items-center w-11/12 my-0 mx-auto justify-end'>
+                <input className='flex grow font-normal border-[#976EC2] border-2 rounded' value={item.category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
+                <div className='bg-[#976EC2] ml-8 w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>수정</div>
+                <div className='bg-[#976EC2] ml-4 w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold' onClick={() => handleDeleteCategory(index)}>삭제</div>
               </div>
-              <div>
+              <div className='flex items-center w-11/12 my-0 mx-auto justify-between'>
                 루틴
-                <img src={plus}onClick={() => handleAddRoutine(index)} />
+                <img className='w-10 h-10' src={plus}onClick={() => handleAddRoutine(index)} />
               </div>
               {item.routines.map((routine, routineIndex) => (
-                <div className='input' key={routineIndex} >
-                  <input style={{ width: "690px", height: "40px", marginRight: "55px" }} value={routine} onChange={(event) => handleRoutineChange(index, routineIndex, event.target.value)} />
-                  <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
-                  <div className='btn_del' onClick={() => handleDeleteRoutine(index, routineIndex)}>삭제</div>
+                <div className='flex items-center w-11/12 my-0 mx-auto justify-end' key={routineIndex} >
+                  <div className='flex grow'></div>
+                  <input className='flex grow font-normal border-[#976EC2] border-2 rounded' value={routine} onChange={(event) => handleRoutineChange(index, routineIndex, event.target.value)} />
+                  <div className='bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold ml-8'>수정</div>
+                  <div className='bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold ml-4' onClick={() => handleDeleteRoutine(index, routineIndex)}>삭제</div>
                 </div>
               ))}
               <hr />
             </div>
           ))}
         </div>
-        <div className='edit'>
-          <div id='out'>
+        <div className='w-11/12 my-0 mx-auto'>
+          <div className='flex items-center justify-between'>
             회원탈퇴
-            <div id='btn_out'>탈퇴</div>
+            <div className='bg-[#FF9C9C] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>탈퇴</div>
           </div>
           탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.
         </div>
