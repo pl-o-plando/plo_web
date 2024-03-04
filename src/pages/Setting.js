@@ -1,9 +1,8 @@
-import React,{useState} from 'react';
-import "../styles/Setting.css";
+import React, { useState } from 'react';
 import plus from "../assets/btn_plus.png";
 
-const Setting=()=> {
-  //닉네임, 각오
+const Setting = () => {
+  // 닉네임, 각오
   const [nickname, setNickname] = useState('nickname');
   const [newNickname, setNewNickname] = useState('');
   const [isNicknameChanged, setIsNicknameChanged] = useState(false);
@@ -11,120 +10,115 @@ const Setting=()=> {
   const [newMd, setNewMd] = useState('');
   const [isMdChanged, setIsMdChanged] = useState(false);
 
-  //카테고리, 루틴
-  const [categories, setCategories] = useState(['']);
-  const [routines, setRoutines] = useState(['']);
+  // 카테고리와 루틴
+  const [categoriesAndRoutines, setCategoriesAndRoutines] = useState([{ category: '', routines: [''] }]);
 
-  //닉네임 수정 
+  // 닉네임 수정 
   const handleNicknameEdit = () => {
     setNickname(newNickname);
     setNewNickname('');
     setIsNicknameChanged(true);
   };
 
-  //각오 수정 
+  // 각오 수정 
   const handleMdEdit = () => {
     setMd(newMd);
     setNewMd('');
     setIsMdChanged(true);
   }
 
-  //카테고리 추가
+  // 카테고리 추가
   const handleAddCategory = () => {
-    setCategories([...categories, '']);
+    setCategoriesAndRoutines([...categoriesAndRoutines, { category: '', routines: [''] }]);
   };
 
-  //카테고리 변경 
+  // 카테고리 변경 
   const handleCategoryChange = (index, value) => {
-    const newCategories = [...categories];
-    newCategories[index] = value;
-    setCategories(newCategories);
+    const newCategoriesAndRoutines = [...categoriesAndRoutines];
+    newCategoriesAndRoutines[index].category = value;
+    setCategoriesAndRoutines(newCategoriesAndRoutines);
   };
 
-  //카테고리 삭제 
+  // 루틴 추가 
+  const handleAddRoutine = (index) => {
+    const newCategoriesAndRoutines = [...categoriesAndRoutines];
+    newCategoriesAndRoutines[index].routines.push('');
+    setCategoriesAndRoutines(newCategoriesAndRoutines);
+  };
+
+  // 루틴 변경 
+  const handleRoutineChange = (categoryIndex, routineIndex, value) => {
+    const newCategoriesAndRoutines = [...categoriesAndRoutines];
+    newCategoriesAndRoutines[categoryIndex].routines[routineIndex] = value;
+    setCategoriesAndRoutines(newCategoriesAndRoutines);
+  };
+
+  // 카테고리 삭제 
   const handleDeleteCategory = (index) => {
-    const newCategories = [...categories];
-    newCategories.splice(index, 1);
-    setCategories(newCategories);
+    if (categoriesAndRoutines.length > 1) {
+      const newCategoriesAndRoutines = [...categoriesAndRoutines];
+      newCategoriesAndRoutines.splice(index, 1);
+      setCategoriesAndRoutines(newCategoriesAndRoutines);
+    }
   };
-
-  //루틴 추가 
-  const handleAddRoutine = () => {
-    setRoutines([...routines, '']);
-  };
-
-  //루틴 변경 
-  const handleRoutineChange = (index, value) => {
-    const newRoutines = [...routines];
-    newRoutines[index] = value;
-    setRoutines(newRoutines);
-  };
-
-  //루틴 삭제 
-  const handleDeleteRoutine = (index) => {
-    const newRoutines = [...routines];
-    newRoutines.splice(index, 1);
-    setRoutines(newRoutines);
+  
+  // 루틴 삭제 
+  const handleDeleteRoutine = (categoryIndex, routineIndex) => {
+    const category = categoriesAndRoutines[categoryIndex];
+    if (category.routines.length > 1) {
+      const newCategoriesAndRoutines = [...categoriesAndRoutines];
+      newCategoriesAndRoutines[categoryIndex].routines.splice(routineIndex, 1);
+      setCategoriesAndRoutines(newCategoriesAndRoutines);
+    }
   };
 
   return (
     <div id='main'>
       <div id='box1'>
         <div id='nicknameBox'>
-          <p style={{WebkitTextStroke:"1px white", fontWeight:"800", fontStyle:"italic"}}>pl&o</p>
+          <p>pl&o</p>
           <div>{nickname} 님</div>
         </div>
         <div id='mindedBox'>
-          <span style={{WebkitTextStroke:"1px white", fontWeight:"bold"}}>각오</span>
-          <input id='md' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)}/>
+          <span>각오</span>
+          <textarea id='md' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)} />
           <div className='btn_edit' onClick={handleMdEdit}>수정</div>
         </div>
       </div>
       <div id='box2'>
         <div id='nickedit'>
           닉네임
-          <input placeholder={isNicknameChanged ? nickname : "nickname"} style={{width:"650px", height:"40px", marginLeft:"148px", marginRight:"40px"}} value={newNickname} onChange={(event) => setNewNickname(event.target.value)}/>
+          <input placeholder={isNicknameChanged ? nickname : "nickname"} value={newNickname} onChange={(event) => setNewNickname(event.target.value)} />
           <div className='btn_edit' onClick={handleNicknameEdit}>수정</div>
         </div>
-        <hr/>
+        <hr />
         <div className='edit'>
-          <div id='password'>
-            현재 비밀번호
-            <input placeholder='password' style={{width:"650px", height:"40px", marginLeft:"50px"}}/>
-          </div>
-          <div id='newPassword'>
-            새 비밀번호 
-            <input placeholder='password' style={{width:"650px", height:"40px",marginLeft:"80px", marginRight:"40px"}}/>
-            <div className='btn_edit'>수정</div>
-          </div>
-          영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.
-        </div>
-        <hr/>
-        <div className='edit'>
-          <div style={{margin:"20px 0 40px 0", display:"flex", alignItems:"center"}}>
+          <div>
             카테고리
-            <img src={plus} style={{marginLeft:"860px"}} onClick={handleAddCategory}/>
+            <img src={plus} onClick={handleAddCategory} />
           </div>
-          {categories.map((category, index) => (
-            <div className='input' key={index} style={{marginBottom:"25px"}}>
-              <input style={{ width: "750px", height: "40px", marginRight: "50px" }} value={category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
-              <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
-              <div className='btn_del'onClick={() => handleDeleteCategory(index)}>삭제</div>
-            </div>
-          ))}
-          <div style={{margin:"30px 0 30px 60px", display:"flex", alignItems:"center"}}>
-            루틴
-            <img src={plus} style={{marginLeft:"860px"}} onClick={handleAddRoutine}/>
-          </div>
-          {routines.map((routine, index) => (
-            <div className='input' key={index} style={{marginBottom:"25px", marginLeft:"60px"}}>
-              <input style={{ width: "690px", height: "40px", marginRight: "50px" }} value={routine} onChange={(event) => handleRoutineChange(index, event.target.value)} />
-              <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
-              <div className='btn_del' onClick={() => handleDeleteRoutine(index)}>삭제</div>
+          {categoriesAndRoutines.map((item, index) => (
+            <div key={index}>
+              <div className='input' style={{ marginBottom: "25px" }}>
+                <input value={item.category} onChange={(event) => handleCategoryChange(index, event.target.value)} />
+                <div className='btn_edit'>수정</div>
+                <div className='btn_del' onClick={() => handleDeleteCategory(index)}>삭제</div>
+              </div>
+              <div>
+                루틴
+                <img src={plus}onClick={() => handleAddRoutine(index)} />
+              </div>
+              {item.routines.map((routine, routineIndex) => (
+                <div className='input' key={routineIndex} >
+                  <input style={{ width: "690px", height: "40px", marginRight: "55px" }} value={routine} onChange={(event) => handleRoutineChange(index, routineIndex, event.target.value)} />
+                  <div className='btn_edit' style={{ marginRight: "20px" }}>수정</div>
+                  <div className='btn_del' onClick={() => handleDeleteRoutine(index, routineIndex)}>삭제</div>
+                </div>
+              ))}
+              <hr />
             </div>
           ))}
         </div>
-        <hr/>
         <div className='edit'>
           <div id='out'>
             회원탈퇴
