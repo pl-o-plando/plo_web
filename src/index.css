@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +14,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@layer components {
+  .sign-btn {
+    @apply w-72 h-12 rounded-lg bg-[#976ec2] text-white text-lg font-semibold;
+  }
+
+  .sign-input {
+    @apply w-72 h-12 border border-solid border-[#976ec2] rounded-xl px-4 text-base placeholder:font-semibold focus:outline-none focus:border-2;
+  }
+  .sign-container {
+    @apply w-[900px] h-[700px] flex flex-row my-auto;
+  }
+  .sign-screen {
+    @apply flex flex-col w-2/4 h-full justify-center items-center border border-solid border-[#976ec2];
+  }
 }
