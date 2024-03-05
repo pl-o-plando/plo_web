@@ -30,4 +30,7 @@ code {
   .sign-screen {
     @apply flex flex-col w-2/4 h-full justify-center items-center border border-solid border-[#976ec2];
   }
+  .sign-error-message {
+    @apply h-10 text-red-500 font-semibold;
+  }
 }
