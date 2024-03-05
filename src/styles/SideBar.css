@@ -6,7 +6,7 @@
   align-items: center;
   background-color: #56337b;
   color: white;
-  justify-content: space-between;
+  justify-content: space-around;
   position: fixed;
 }
 
@@ -15,7 +15,7 @@
   font-weight: bold;
   font-style: italic;
   margin-top: 40px;
-  margin-bottom: 150px;
+  /* margin-bottom: 150px; */
 }
 
 #items {
@@ -24,7 +24,8 @@
   align-items: center;
   margin-bottom: 40px;
   flex-grow: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 50px;
 }
 
 img {
