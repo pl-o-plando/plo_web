@@ -1,4 +1,11 @@
+import { useForm } from "react-hook-form";
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   return (
     <div className="sign-container">
       <form className="sign-screen gap-10">
