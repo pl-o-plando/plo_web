@@ -1,7 +1,30 @@
 import React, { useState} from 'react';
 import plus from "../assets/btn_plus.png";
+import { useForm } from "react-hook-form";
 
 const Setting = () => {
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  const handleEditPassword = () => {
+    // 새 비밀번호와 새 비밀번호 확인 값 비교
+    if (newPassword !== confirmNewPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+  };
+
   // 닉네임, 각오
   const [nickname, setNickname] = useState('nickname');
   const [newNickname, setNewNickname] = useState('');
@@ -98,22 +121,24 @@ const Setting = () => {
         <div className='h-[20rem] flex flex-col justify-evenly'>
           <div className='flex items-center w-11/12 mb-4 mx-auto'>
             <p className='flex grow'>현재 비밀번호</p>
-            <input type='password' className='outline-none text-black pl-3 h-11 w-[27rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
-            <div className='ml-8 w-[6rem] h-10 '></div>
-            <div className='ml-4 w-[6rem] h-10 '></div>
-          </div>
-          <div className='flex items-center w-11/12 my-0 mx-auto'>
-            <p className='flex grow'>새 비밀번호</p>
-            <input type='password' className='outline-none text-black pl-3 h-11 w-[27rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
-            <div className='ml-8 w-[6rem] h-10 '></div>
-            <div className='ml-4 w-[6rem] h-10 '></div>
-          </div>
-          <div className='flex items-center w-11/12 mb-3 mx-auto'>
-            <p className='flex grow'>새 비밀번호 확인</p>
-            <input type='password' className='outline-none text-black pl-3 h-11 w-[27rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
+            <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
             <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>확인</div>
-            <div className='ml-4 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>수정</div>
           </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='flex items-center w-11/12 mb-4 mx-auto'>
+              <p className='flex grow'>새 비밀번호</p>
+              <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' {...register("newPassword", { required: "비밀번호를 입력하세요." })}/>
+              <div className='ml-8 w-[6rem] h-10 '></div>
+            </div>
+            <div className='flex items-center w-11/12 mb-3 mx-auto'>
+              <p className='flex grow'>새 비밀번호 확인</p>
+              <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' {...register("confirmNewPassword", { required: "비밀번호를 입력하세요.", validate:(value)=>value===watch("newPassword")||"비밀번호가 일치하지 않습니다.", })}/>
+              <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>변경</div>
+            </div>
+            <div className="error-message">
+            {errors.newPassword && errors.setNewPassword.message}
+          </div>
+          </form>
           <p className='w-11/12 my-0 mx-auto'>영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.</p>
         </div>
         <hr/>
