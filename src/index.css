@@ -16,6 +16,21 @@ code {
     monospace;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.App {
+  height: 100%;
+}
+
 @layer components {
   .sign-btn {
     @apply w-72 h-12 rounded-lg bg-[#976ec2] text-white text-lg font-semibold;
@@ -29,5 +44,8 @@ code {
   }
   .sign-screen {
     @apply flex flex-col w-2/4 h-full justify-center items-center border border-solid border-[#976ec2];
+  }
+  .sign-error-message {
+    @apply h-10 text-red-500 font-semibold;
   }
 }
