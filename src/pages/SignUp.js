@@ -10,7 +10,7 @@ const SignUp = () => {
     console.log(data);
   };
   return (
-    <div className="sign-container">
+    <div className="sign-container ">
       <form className="sign-screen" onSubmit={handleSubmit(onSubmit)}>
         <div className="text-5xl font-extrabold text-[#976ec2] mb-10">
           Sign up
