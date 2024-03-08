@@ -139,7 +139,7 @@ const Setting = () => {
             {errors.newPassword && errors.setNewPassword.message}
           </div>
           </form>
-          <p className='w-11/12 my-0 mx-auto'>영소, 대문자, 특수기호 포함 8자리 이상 18자리 이하로 작성해주세요.</p>
+          <p className='w-11/12 my-0 mx-auto'>영문, 숫자, 특수문자를 포함한 8자 이상 18자 이하로 입력해주세요.</p>
         </div>
         <hr/>
         <div>
