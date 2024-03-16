@@ -3,27 +3,6 @@ import plus from "../assets/btn_plus.png";
 import { useForm } from "react-hook-form";
 
 const Setting = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const handleEditPassword = () => {
-    // 새 비밀번호와 새 비밀번호 확인 값 비교
-    if (newPassword !== confirmNewPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-  };
 
   // 닉네임, 각오
   const [nickname, setNickname] = useState('nickname');
@@ -32,7 +11,6 @@ const Setting = () => {
   const [md, setMd] = useState('아자아자 화이팅');
   const [newMd, setNewMd] = useState('');
   const [isMdChanged, setIsMdChanged] = useState(false);
-
 
   // 카테고리와 루틴
   const [categoriesAndRoutines, setCategoriesAndRoutines] = useState([{ category: '', routines: [''] }]);
@@ -105,7 +83,13 @@ const Setting = () => {
         </div>
         <div className='flex flex-col w-[32rem]'>
           <p className='text-3xl text-[#976EC2] mt-1 w-11/12 my-0 mx-auto h-[3rem] flex items-center font-extrabold' style={{WebkitTextStroke:"1px #fff"}}>각오</p>
-          <textarea className='text-2xl resize-none outline-none p-3 w-11/12 h-[7rem] my-0 mx-auto rounded border-[#976EC2] border-2' placeholder={isMdChanged ? md : "아자아자 화이팅"} value={newMd} onChange={(event) => setNewMd(event.target.value)} />
+          <textarea 
+            className='text-2xl resize-none outline-none p-3 w-11/12 h-[7rem] my-0 mx-auto rounded border-[#976EC2] border-2' 
+            placeholder={isMdChanged ? md : "아자아자 화이팅"} 
+            value={newMd} 
+            onChange={(event) => setNewMd(event.target.value)} 
+            maxLength={36}
+          />
           <div className='w-11/12 my-0 mx-auto mt-2'>
             <div className='float-right bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold' onClick={handleMdEdit}>수정</div>
           </div>
@@ -114,34 +98,43 @@ const Setting = () => {
       <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold'>
         <div className='flex items-center h-[8rem] w-11/12 my-0 mx-auto justify-end'>
           <p className='flex grow'>닉네임</p>
-          <input className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' placeholder={isNicknameChanged ? nickname : "nickname"} value={newNickname} onChange={(event) => setNewNickname(event.target.value)} />
+          <input 
+            className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' 
+            placeholder={isNicknameChanged ? nickname : "nickname"} 
+            value={newNickname} 
+            onChange={(event) => setNewNickname(event.target.value)} 
+            maxLength={9} 
+          />
           <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'onClick={handleNicknameEdit}>수정</div>
         </div>
-        <hr />
+        <hr style={{ borderBottom: '2px solid #976EC2' }}/>
         <div className='h-[20rem] flex flex-col justify-evenly'>
           <div className='flex items-center w-11/12 mb-4 mx-auto'>
             <p className='flex grow'>현재 비밀번호</p>
             <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
             <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>확인</div>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='flex items-center w-11/12 mb-4 mx-auto'>
-              <p className='flex grow'>새 비밀번호</p>
-              <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' {...register("newPassword", { required: "비밀번호를 입력하세요." })}/>
-              <div className='ml-8 w-[6rem] h-10 '></div>
-            </div>
+          <form>
+          <div className='flex items-center w-11/12 mb-4 mx-auto'>
+            <p className='flex grow'>새 비밀번호</p>
+            <input 
+              type='password' 
+              className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'
+            />
+            <div className='ml-8 w-[6rem] h-10 '></div>
+          </div>
             <div className='flex items-center w-11/12 mb-3 mx-auto'>
               <p className='flex grow'>새 비밀번호 확인</p>
-              <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' {...register("confirmNewPassword", { required: "비밀번호를 입력하세요.", validate:(value)=>value===watch("newPassword")||"비밀번호가 일치하지 않습니다.", })}/>
+              <input 
+                type='password' 
+                className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'
+              />
               <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>변경</div>
             </div>
-            <div className="error-message">
-            {errors.newPassword && errors.setNewPassword.message}
-          </div>
           </form>
-          <p className='w-11/12 my-0 mx-auto'>영문, 숫자, 특수문자를 포함한 8자 이상 18자 이하로 입력해주세요.</p>
+          <p className='w-11/12 my-0 mx-auto text-[1rem] text-[#FF9C9C]'>영문, 숫자, 특수문자를 포함한 8자 이상 18자 이하의 비밀번호를 입력하세요.</p>
         </div>
-        <hr/>
+        <hr style={{ borderBottom: '2px solid #976EC2' }}/>
         <div>
           <div className='flex items-center w-11/12 my-0 mx-auto justify-between h-[4rem]'>
             카테고리
@@ -166,7 +159,7 @@ const Setting = () => {
                   <div className='bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold ml-4' onClick={() => handleDeleteRoutine(index, routineIndex)}>삭제</div>
                 </div>
               ))}
-              <hr className='mt-4'/>
+              <hr className='mt-4' style={{ borderBottom: '2px solid #976EC2' }}/>
             </div>
           ))}
         </div>
@@ -175,7 +168,7 @@ const Setting = () => {
             회원탈퇴
             <div className='bg-[#FF9C9C] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>탈퇴</div>
           </div>
-          탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.
+          <span className='text-[1rem] text-[#FF9C9C]'>탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.</span>
         </div>
       </div>
     </div>
