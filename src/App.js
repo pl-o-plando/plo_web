@@ -3,6 +3,7 @@ import SideBar from "./component/SideBar.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn.js";
 import SignUp from "./pages/SignUp.js";
+import Main from "./pages/Main.js";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <SideBar />
         <div className="content">
           <Routes>
+            <Route path="/" element={<Main />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
           </Routes>
