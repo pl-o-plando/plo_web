@@ -3,7 +3,44 @@ import plus from "../assets/btn_plus.png";
 import { useForm } from "react-hook-form";
 
 const Setting = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  const pw = "12345678a!"
 
+  const [enteredPw, setEnteredPw] = useState('');
+  const [pwMessage, setPwMessage] = useState('');
+  const [newPw, setNewPw] = useState('');
+  const [newPwCk, setNewPwCk] = useState('');
+  const [newPwM, setNewPwM] = useState('');
+
+  const handlePwSubmit = () => {
+    if (enteredPw === pw) {
+      setPwMessage("비밀번호가 일치합니다.");
+    } else {
+      setPwMessage("비밀번호가 일치하지 않습니다.");
+    }
+  };
+
+  const handleNewPwSubmit = () => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,18}$/;
+    const isNewPwValid = passwordRegex.test(newPw);
+  
+    if (!isNewPwValid) {
+      setNewPwM("영문, 숫자, 특수문자를 포함한 8자 이상 18자 이하의 비밀번호를 입력하세요.");
+    } else if (newPw !== newPwCk) {
+      setNewPwM("비밀번호가 일치하지 않습니다.");
+    } else {
+      setNewPwM("비밀번호가 일치합니다.");
+    }
+  };
+  
   // 닉네임, 각오
   const [nickname, setNickname] = useState('nickname');
   const [newNickname, setNewNickname] = useState('');
@@ -108,31 +145,48 @@ const Setting = () => {
           <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'onClick={handleNicknameEdit}>수정</div>
         </div>
         <hr style={{ borderBottom: '2px solid #976EC2' }}/>
-        <div className='h-[20rem] flex flex-col justify-evenly'>
+        <div className='h-[22rem] flex flex-col justify-evenly'>
+          <form onSubmit={handleSubmit(onSubmit)}>
           <div className='flex items-center w-11/12 mb-4 mx-auto'>
             <p className='flex grow'>현재 비밀번호</p>
-            <input type='password' className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'/>
-            <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>확인</div>
-          </div>
-          <form>
-          <div className='flex items-center w-11/12 mb-4 mx-auto'>
-            <p className='flex grow'>새 비밀번호</p>
             <input 
               type='password' 
               className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'
+              value={enteredPw}
+              onChange={(e) => setEnteredPw(e.target.value)}
             />
-            <div className='ml-8 w-[6rem] h-10 '></div>
+            <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold' type="submit" onClick={handlePwSubmit}>확인</div>
           </div>
-            <div className='flex items-center w-11/12 mb-3 mx-auto'>
+          <div className='h-3 w-11/12 text-lg mx-auto text-[#FF9C9C]'>{pwMessage}</div>
+          </form>
+          <form>
+            <div className='flex items-center w-11/12 mb-4 mx-auto'>
+              <p className='flex grow'>새 비밀번호</p>
+              <input 
+                type='password' 
+                className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'
+                value={newPw} 
+                onChange={(e) => setNewPw(e.target.value)} 
+              />
+              <div className='ml-8 w-[6rem] h-10 '></div>
+            </div>
+            <div className='w-11/12 my-0 mx-auto text-lg text-[#FF9C9C]'>
+              {errors.password && errors.password.message}
+            </div>
+            <div className='flex items-center w-11/12 mx-auto'>
               <p className='flex grow'>새 비밀번호 확인</p>
               <input 
                 type='password' 
                 className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2'
+                value={newPwCk} 
+                onChange={(e) => setNewPwCk(e.target.value)} 
               />
-              <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>변경</div>
+              <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold' type="submit" onClick={handleNewPwSubmit}>변경</div>
+            </div>
+            <div className='h-3 w-11/12 my-0 mx-auto text-lg text-[#FF9C9C] mt-5'>
+              {newPwM}
             </div>
           </form>
-          <p className='w-11/12 my-0 mx-auto text-[1rem] text-[#FF9C9C]'>영문, 숫자, 특수문자를 포함한 8자 이상 18자 이하의 비밀번호를 입력하세요.</p>
         </div>
         <hr style={{ borderBottom: '2px solid #976EC2' }}/>
         <div>
@@ -168,7 +222,7 @@ const Setting = () => {
             회원탈퇴
             <div className='bg-[#FF9C9C] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>탈퇴</div>
           </div>
-          <span className='text-[1rem] text-[#FF9C9C]'>탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.</span>
+          <span className='text-lg text-[#FF9C9C]'>탈퇴 시 작성하신 모든 정보는 삭제되며 복구가 불가능합니다.</span>
         </div>
       </div>
     </div>
