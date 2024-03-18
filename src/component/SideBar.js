@@ -2,12 +2,39 @@ import "../styles/SideBar.css";
 import calendar from "../assets/SideBar/calendar.png";
 import pieChart from "../assets/SideBar/pie-chart-2.png";
 import settings from "../assets/SideBar/settings.png";
+import React, { useState } from "react";
+
 const SideBar = () => {
+  //0->캘린더(메인), 1->통계, 2->설정
+  const [isSelected, setIsSelected] = useState(0);
+  const onClick = (num) => {
+    setIsSelected(num);
+    console.log(num);
+  };
+  const menuItems = [
+    { src: calendar, onClick: () => onClick(0), isSelected: isSelected === 0 },
+    { src: pieChart, onClick: () => onClick(1), isSelected: isSelected === 1 },
+    { src: settings, onClick: () => onClick(2), isSelected: isSelected === 2 },
+  ];
+
+  const renderMenuItems = () => {
+    return menuItems.map((item, index) => (
+      <img
+        key={index}
+        src={item.src}
+        onClick={item.onClick}
+        className={`cursor-pointer ${
+          item.isSelected && "border-white border-4"
+        }`}
+      />
+    ));
+  };
+
   return (
     <div id="side-bar">
       <div id="logo">pl&o</div>
       <div id="items">
-        <img src={calendar} /> <img src={pieChart} /> <img src={settings} />
+        {renderMenuItems()}
         <div id="loginBtn">로그인</div>
       </div>
     </div>
