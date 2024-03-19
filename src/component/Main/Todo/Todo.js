@@ -1,5 +1,4 @@
 import React from "react";
-import { IoIosArrowForward } from "react-icons/io";
 import CategoryAndTodo from "./CategoryAndTodo";
 
 const Todo = () => {
@@ -15,8 +14,6 @@ const Todo = () => {
         >
           Todo
         </p>
-        <div className={"flex-1"}></div>
-        <IoIosArrowForward size="30" color="976EC2" />
       </div>
       <div
         className={" bg-white rounded-md m-1 py-5 px-4"}
