@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { IoMdSettings } from "react-icons/io";
+import DetailModal from "../../Modal/DetailModal";
 
-const TodoList = () => {
+const TodoList = ({ todo }) => {
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const closeDetailModal = () => {
+    setIsDetailModalOpen(false);
+  };
+
+  const date = "2024-03-19";
   return (
     <div
       className={
@@ -9,10 +17,30 @@ const TodoList = () => {
       style={{ border: "1px solid #976EC2" }}
     >
       <div
-        className={" bg-white w-8 h-8 mr-4"}
-        style={{ border: "1px solid #976EC2" }}
+        style={{
+          backgroundColor: "white",
+          border: "1px solid #976EC2",
+          width: "32px",
+          height: "32px",
+        }}
       ></div>
-      <div className={"font-medium"}>피그마 완성하기</div>
+      <div className={"font-medium flex-1 overflow-auto break-words mx-4"}>
+        {todo}
+      </div>
+      {/* 누르면 Detail 모달창 열림 */}
+      <IoMdSettings
+        size="2rem"
+        color="976EC2"
+        onClick={() => {
+          setIsDetailModalOpen(!isDetailModalOpen);
+        }}
+      />
+      {isDetailModalOpen && (
+        <DetailModal
+          modalState={isDetailModalOpen}
+          onClose={closeDetailModal}
+        />
+      )}
     </div>
   );
 };
