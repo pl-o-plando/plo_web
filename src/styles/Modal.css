@@ -41,6 +41,16 @@
   padding: 1rem 1.25rem;
 }
 
+.dropdownItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.dropdownItem:hover {
+  background-color: #976ec2;
+}
+
 .contentBox {
   display: flex;
   flex-direction: column;
