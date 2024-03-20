@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../../styles/Modal.css";
 import { IoClose } from "react-icons/io5";
-import { IoIosArrowDropdown } from "react-icons/io";
+import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleUp } from "react-icons/fa6";
+import Dropdown from "./Dropdown.js";
 
 const DetailModal = ({ modalState, onClose }) => {
   const [date, setDate] = useState("2024-03-19");
@@ -9,6 +11,16 @@ const DetailModal = ({ modalState, onClose }) => {
   const handleDate = (e) => {
     setDate(e.target.value);
   };
+
+  const [isDropdownOpen, setIsDropdonwOpen] = useState(false);
+  const closeDropdown = () => {
+    setIsDropdonwOpen(false);
+  };
+
+  const changeState = (value) => {
+    setState(value);
+  };
+
   return (
     <div>
       {modalState && (
@@ -30,8 +42,29 @@ const DetailModal = ({ modalState, onClose }) => {
               </div>
               <div className="itemBox text-[#848484] flex flex-row justify-between">
                 <p>{state}</p>
-                <IoIosArrowDropdown size={30} />
+                {isDropdownOpen ? (
+                  <FaAngleUp
+                    size={30}
+                    onClick={() => {
+                      setIsDropdonwOpen(!isDropdownOpen);
+                    }}
+                  />
+                ) : (
+                  <FaAngleDown
+                    size={30}
+                    onClick={() => {
+                      setIsDropdonwOpen(!isDropdownOpen);
+                    }}
+                  />
+                )}
               </div>
+              {isDropdownOpen && (
+                <Dropdown
+                  dropdownState={isDropdownOpen}
+                  changeState={changeState}
+                  onClose={closeDropdown}
+                />
+              )}
               <div className={"flex justify-between"}>
                 <button className="btn">삭제</button>
                 <button className="btn">완료</button>
