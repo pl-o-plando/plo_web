@@ -22,8 +22,8 @@ const SignUp = () => {
           {...register("nickname", {
             required: "필수 입력 항목입니다.",
             maxLength: {
-              value: 8,
-              message: "닉네임은 최대 8자리까지 가능합니다.",
+              value: 9,
+              message: "닉네임은 최대 9자리까지 가능합니다.",
             },
           })}
         />
