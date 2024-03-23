@@ -22,8 +22,8 @@ const SignUp = () => {
           {...register("nickname", {
             required: "필수 입력 항목입니다.",
             maxLength: {
-              value: 8,
-              message: "닉네임은 최대 8자리까지 가능합니다.",
+              value: 9,
+              message: "닉네임은 최대 9자리까지 가능합니다.",
             },
           })}
         />
@@ -33,7 +33,7 @@ const SignUp = () => {
         <div>
           <input
             placeholder="email"
-            type="email"
+            type="text"
             className="sign-input ml-12 mr-4"
             {...register("email", {
               required: "필수 입력 항목입니다.",
@@ -43,7 +43,10 @@ const SignUp = () => {
               },
             })}
           />
-          <button type="button" className={"text-[#976EC2] font-semibold h-12"}>
+          <button
+            type="button"
+            className={"text-[#976EC2] font-extrabold h-12"}
+          >
             확인
           </button>
         </div>
