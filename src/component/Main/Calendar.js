@@ -115,15 +115,16 @@ const Calendar = () => {
       </div>
       <div className={"flex flex-row justify-between w-full mb-3"}>
         <div className={"w-10"} />
-        {dayList.map((day, index) => (
+        {dayList.map((item, index) => (
           <div
             key={index}
             className={
-              "text-2xl text-[#976EC2] font-bold w-10 h-10 text-center"
+              "text-2xl text-[#976EC2] font-bold w-10 h-10 rounded-full flex justify-center items-center"
             }
             onClick={handleClickDate}
+            style={{ backgroundColor: date === item ? "#E5D1FA" : "white" }}
           >
-            {day}
+            {item}
           </div>
         ))}
         <div className={"w-10"} />
