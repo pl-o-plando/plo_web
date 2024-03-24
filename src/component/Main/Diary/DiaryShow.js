@@ -48,7 +48,7 @@ const DiaryShow = () => {
       ></textarea>
       <div className="flex justify-end">
         <div 
-          className="bg-[#976EC2] w-[8rem] h-[4rem] rounded-xl text-white font-bold text-2xl flex justify-center items-center"
+          className="bg-[#976EC2] w-[8rem] h-[4rem] rounded-xl text-white font-bold text-2xl flex justify-center items-center mb-8"
           onClick={handleSaveDiary}
         >
           <FaCheck color="white" size={35} />
