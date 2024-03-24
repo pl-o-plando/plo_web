@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-import plus from "../assets/btn_plus.png";
 import { useForm } from "react-hook-form";
 import { GoPlusCircle } from "react-icons/go";
 
