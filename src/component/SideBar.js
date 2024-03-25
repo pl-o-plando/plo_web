@@ -12,13 +12,11 @@ const SideBar = () => {
   const onClick = (num) => {
     setIsSelected(num);
     console.log(num);
-    if(num==0){
+    if (num === 0) {
       navigate("/");
-    }
-    else if(num==1){
+    } else if (num === 1) {
       navigate("");
-    }
-    else if(num==2){
+    } else if (num === 2) {
       navigate("/setting");
     }
   };
@@ -27,6 +25,10 @@ const SideBar = () => {
     { src: pieChart, onClick: () => onClick(1), isSelected: isSelected === 1 },
     { src: settings, onClick: () => onClick(2), isSelected: isSelected === 2 },
   ];
+
+  const goSignin = () => {
+    navigate("/signin");
+  };
 
   const renderMenuItems = () => {
     return menuItems.map((item, index) => (
@@ -46,7 +48,9 @@ const SideBar = () => {
       <div id="logo">pl&o</div>
       <div id="items">
         {renderMenuItems()}
-        <div id="loginBtn">로그인</div>
+        <div id="loginBtn" onClick={goSignin}>
+          로그인
+        </div>
       </div>
     </div>
   );
