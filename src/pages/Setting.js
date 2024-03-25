@@ -1,7 +1,6 @@
 import React, { useState} from 'react';
-import plus from "../assets/btn_plus.png";
 import { useForm } from "react-hook-form";
-import { CiCirclePlus } from "react-icons/ci";
+import { GoPlusCircle } from "react-icons/go";
 
 const Setting = () => {
   const {
@@ -193,7 +192,7 @@ const Setting = () => {
         <div>
           <div className='flex items-center w-11/12 my-0 mx-auto justify-between h-[4rem]'>
             카테고리
-            <CiCirclePlus size="35" onClick={handleAddCategory} />
+            <GoPlusCircle size="35" onClick={handleAddCategory} />
           </div>
           {categoriesAndRoutines.map((item, index) => (
             <div key={index}>
@@ -204,7 +203,7 @@ const Setting = () => {
               </div>
               <div className='mb-5 flex items-center w-11/12 my-0 mx-auto justify-between'>
                   루틴
-                  <CiCirclePlus size="35" onClick={() => handleAddRoutine(index)} />
+                  <GoPlusCircle size="35" onClick={() => handleAddRoutine(index)} />
               </div>
               {item.routines.map((routine, routineIndex) => (
                 <div className='mb-5 flex items-center w-11/12 my-0 mx-auto justify-end' key={routineIndex} >
