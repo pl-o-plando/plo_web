@@ -16,7 +16,7 @@ const SideBar = () => {
       navigate("/");
     }
     else if(num==1){
-      navigate("");
+      navigate("/statistics");
     }
     else if(num==2){
       navigate("/setting");

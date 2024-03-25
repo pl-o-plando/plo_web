@@ -6,6 +6,7 @@ import Setting from "./pages/Setting.js";
 import SignIn from "./pages/SignIn.js";
 import SignUp from "./pages/SignUp.js";
 import Main from "./pages/Main.js";
+import Statistics from "./pages/Statistics.js";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/signin" element={<SignIn />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
               <Route path="/setting" element={<Setting />}></Route>
+              <Route path="/statistics" element={<Statistics />}></Route>
             </Routes>
           </div>
         </BrowserRouter>
