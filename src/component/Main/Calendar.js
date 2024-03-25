@@ -14,6 +14,7 @@ const Calendar = () => {
   const [month, setMonth] = useRecoilState(monthState);
   const [date, setDate] = useRecoilState(dateState);
   const [day, setDay] = useRecoilState(dayState);
+  const [flag, setFlag] = useState(false);
 
   //현재 주의 시작일(일)
   const [startDate, setStartDate] = useState(new Date(year, month, date - day));
@@ -40,9 +41,19 @@ const Calendar = () => {
 
   //날짜 렌더링
   const renderDay = () => {
+    setFlag(false);
     const newDayList = [];
     let currentDate = new Date(startDate);
+    //1일이 월화수목에 위치한다면 해당 달로 표시
     while (currentDate <= endDate) {
+      if (
+        currentDate.getDate() == 1 &&
+        currentDate.getDay() > 0 &&
+        currentDate.getDay() < 5
+      ) {
+        setFlag(!flag);
+      }
+
       newDayList.push(currentDate.getDate());
       currentDate.setDate(currentDate.getDate() + 1);
     }
@@ -106,7 +117,10 @@ const Calendar = () => {
   return (
     <div className={"flex flex-col justify-center items-center p-4"}>
       <p className={"text-[#976EC2] text-4xl font-bold mt-10 mb-14"}>
-        {startDate.getFullYear()}년 {startDate.getMonth() + 1}월
+        {startDate.getFullYear()}년{" "}
+        {flag
+          ? `${startDate.getMonth() + 2}월`
+          : `${startDate.getMonth() + 1}월`}
       </p>
       <div className={"flex flex-row justify-between w-full mb-3"}>
         <IoIosArrowBack onClick={moveToPreviousWeek} size={40} color="976EC2" />
