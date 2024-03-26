@@ -1,6 +1,6 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
-import {Chart, ArcElement} from 'chart.js'
+import { Doughnut } from 'react-chartjs-2'; 
+import { Chart, ArcElement } from 'chart.js';
 Chart.register(ArcElement);
 
 const Graph = ({ data }) => {
@@ -25,7 +25,7 @@ const Graph = ({ data }) => {
     ],
   };
 
-  return <Pie data={graphData}/>;
+  return <Doughnut data={graphData} />; 
 };
 
 export default Graph;
