@@ -7,6 +7,7 @@ import { FaExclamation } from "react-icons/fa6";
 const TodoDropdownModal = ({ dropdownState, changeState, onClose }) => {
   const handleChange = (value) => {
     changeState(value);
+    console.log(value);
   };
 
   return (
@@ -22,7 +23,7 @@ const TodoDropdownModal = ({ dropdownState, changeState, onClose }) => {
               <IoClose
                 size="50"
                 onClick={() => {
-                  onClose(); // 부모 컴포넌트의 상태 업데이트 함수 호출
+                  onClose();
                 }}
               />
             </div>
@@ -30,7 +31,7 @@ const TodoDropdownModal = ({ dropdownState, changeState, onClose }) => {
               <div
                 className="itemBox dropdownItem"
                 onClick={() => {
-                  handleChange("완료");
+                  handleChange(2);
                   onClose();
                 }}
               >
@@ -40,7 +41,7 @@ const TodoDropdownModal = ({ dropdownState, changeState, onClose }) => {
               <div
                 className="itemBox  dropdownItem"
                 onClick={() => {
-                  handleChange("진행중");
+                  handleChange(1);
                   onClose();
                 }}
               >
@@ -50,7 +51,7 @@ const TodoDropdownModal = ({ dropdownState, changeState, onClose }) => {
               <div
                 className="itemBox  dropdownItem"
                 onClick={() => {
-                  handleChange("미완료");
+                  handleChange(0);
                   onClose();
                 }}
               >

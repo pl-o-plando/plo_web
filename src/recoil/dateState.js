@@ -10,7 +10,12 @@ export const monthState = atom({
   default: new Date().getMonth(),
 });
 
+export const dateState = atom({
+  key: "dateState",
+  default: new Date().getDate(),
+});
+
 export const dayState = atom({
   key: "dayState",
-  default: new Date().getDate(),
+  default: new Date().getDay(),
 });
