@@ -112,7 +112,7 @@ const Setting = () => {
   };
 
   return (
-    <div className='my-11 h-[74rem]'>
+    <div className='my-11 h-[76rem]'>
       <div className='flex bg-[#E5D1FA] mb-5 border-[#976EC2] border-2 h-[14rem]'>
         <div className='flex justify-center items-center flex-col w-[28rem] mb-5 border-[#976EC2] border-r-2 h-full'>
           <p className='text-6xl text-[#976EC2] italic font-extrabold mb-7' style={{WebkitTextStroke:"2px #fff"}}>pl&o</p>
@@ -132,17 +132,22 @@ const Setting = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold h-[56rem]'>
-        <div className='flex items-center h-[8rem] w-11/12 my-0 mx-auto justify-end'>
-          <p className='flex grow'>닉네임</p>
-          <input 
-            className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' 
-            placeholder={isNicknameChanged ? nickname : "nickname"} 
-            value={newNickname} 
-            onChange={(event) => setNewNickname(event.target.value)} 
-            maxLength={9} 
-          />
-          <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'onClick={handleNicknameEdit}>수정</div>
+      <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold h-[58rem]'>
+        <div className='h-[9rem]'>
+          <div className='flex items-center h-[6rem] w-11/12 my-0 mx-auto justify-end mt-7'>
+            <p className='flex grow'>닉네임</p>
+            <input 
+              className='outline-none text-black pl-3 h-11 w-[34rem] font-normal border-[#976EC2] border-2 rounded grow-2' 
+              placeholder={isNicknameChanged ? nickname : "nickname"} 
+              value={newNickname} 
+              onChange={(event) => setNewNickname(event.target.value)} 
+              maxLength={9} 
+            />
+            <div className='ml-8 bg-[#976EC2] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'onClick={handleNicknameEdit}>수정</div>
+          </div>
+          {newNickname.length>9 &&(
+          <div className='w-11/12 mx-auto text-lg text-[#FF9C9C]'>닉네임은 9글자까지만 입력 가능합니다.</div>
+          )}
         </div>
         <hr style={{ borderBottom: '2px solid #976EC2' }}/>
         <div className='h-[22rem] flex flex-col justify-evenly'>
