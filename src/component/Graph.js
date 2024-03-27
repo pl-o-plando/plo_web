@@ -1,7 +1,5 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2'; 
-import { Chart, ArcElement } from 'chart.js';
-Chart.register(ArcElement);
 
 const Graph = ({ data }) => {
   const graphData = {
@@ -25,7 +23,15 @@ const Graph = ({ data }) => {
     ],
   };
 
-  return <Doughnut data={graphData} />; 
+  const options = {
+    plugins: {
+      legend: {
+        position: 'right',
+      },
+    },
+  };
+
+  return <Doughnut data={graphData} options={options} />; 
 };
 
 export default Graph;

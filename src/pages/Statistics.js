@@ -8,7 +8,7 @@ const Statistics = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full h-[22rem] flex justify-center items-end my-10">
+      <div className="w-full h-[28rem] flex justify-center items-end">
         <Graph data={graphData}/>
       </div>
       <div>
