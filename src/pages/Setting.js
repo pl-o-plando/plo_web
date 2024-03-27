@@ -112,7 +112,7 @@ const Setting = () => {
   };
 
   return (
-    <div className='my-11'>
+    <div className='my-11 h-[74rem]'>
       <div className='flex bg-[#E5D1FA] mb-5 border-[#976EC2] border-2 h-[14rem]'>
         <div className='flex justify-center items-center flex-col w-[28rem] mb-5 border-[#976EC2] border-r-2 h-full'>
           <p className='text-6xl text-[#976EC2] italic font-extrabold mb-7' style={{WebkitTextStroke:"2px #fff"}}>pl&o</p>
@@ -132,7 +132,7 @@ const Setting = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold'>
+      <div className='bg-[#E5D1FA] border-[#976EC2] border-2 text-2xl text-[#976EC2] font-bold h-[56rem]'>
         <div className='flex items-center h-[8rem] w-11/12 my-0 mx-auto justify-end'>
           <p className='flex grow'>닉네임</p>
           <input 
@@ -217,7 +217,7 @@ const Setting = () => {
             </div>
           ))}
         </div>
-        <div className='w-11/12 my-0 mx-auto h-[8rem] flex flex-col justify-center'>
+        <div className='w-11/12 mx-auto h-[8rem] flex flex-col justify-center'>
           <div className='flex items-center justify-between mb-5'>
             회원탈퇴
             <div className='bg-[#FF9C9C] w-[6rem] h-10 text-white rounded-xl flex justify-center items-center text-2xl font-bold'>탈퇴</div>
